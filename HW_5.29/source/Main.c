@@ -1,0 +1,38 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+int gcd(int a, int b) 
+{
+    while (b != 0) 
+    {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+
+int lcm(int a, int b) 
+{
+    if (a == 0 || b == 0) return 0;
+    return (a * b) / gcd(a, b);
+}
+
+int main(void) 
+{
+    int num1, num2;
+
+    printf("請輸入兩個整數 : ");
+    if (scanf("%d %d", &num1, &num2) == 2) 
+    {
+        printf("LCM of %d and %d is %d\n", num1, num2, lcm(num1, num2));
+    }
+    else 
+    {
+        printf("輸入格式錯誤！\n");
+    }
+
+    return 0;
+}
